@@ -1,0 +1,45 @@
+<Window x:Class="ProjectManagementSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:local="clr-namespace:ProjectManagementSystem"
+        Title="Project List"
+		WindowState="Maximized"
+		WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <DataTemplate x:Key="ProjectTemplate">
+            <Button Background="Transparent"
+            BorderThickness="0"
+            Padding="0"
+            Click="ProjectBox_Click">
+                <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Margin="10" Padding="10" Background="LightGray" Width="200" Height="100">
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="14"/>
+                        <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="AddButtonTemplate">
+            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Margin="10" Padding="10" Background="WhiteSmoke" Width="200" Height="100">
+                <Button Content="+ Add Project" FontSize="14" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AddProjectButton_Click"/>
+            </Border>
+        </DataTemplate>
+
+        <local:ProjectTemplateSelector x:Key="ProjectSelector"
+                                       ProjectTemplate="{StaticResource ProjectTemplate}"
+                                       AddButtonTemplate="{StaticResource AddButtonTemplate}" />
+    </Window.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <ItemsControl Name="ProjectItemsControl"
+                      ItemTemplateSelector="{StaticResource ProjectSelector}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </ScrollViewer>
+</Window>

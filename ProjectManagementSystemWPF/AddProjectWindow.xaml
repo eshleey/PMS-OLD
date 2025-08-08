@@ -1,0 +1,20 @@
+﻿<Window x:Class="ProjectManagementSystem.AddProjectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Create New Project" Height="250" Width="400"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Project Name:" FontWeight="Bold"/>
+            <TextBox Name="ProjectNameBox" Margin="0,5,0,10"/>
+
+            <TextBlock Text="Project Description:" FontWeight="Bold"/>
+            <TextBox Name="ProjectDescriptionBox" Height="80" TextWrapping="Wrap" AcceptsReturn="True"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0">
+                <Button Content="Cancel" Width="75" Margin="0,0,10,0" Click="Cancel_Click"/>
+                <Button Content="Create" Width="75" Click="Create_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
